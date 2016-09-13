@@ -1,0 +1,66 @@
+﻿@model WebApplication2.Models.tarefa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.membro.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.membro.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dCriacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dCriacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dEntregaReal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dEntregaReal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTarefa }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
