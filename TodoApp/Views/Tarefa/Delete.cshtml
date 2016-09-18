@@ -1,0 +1,88 @@
+﻿@model TodoApp.Models.Tarefa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataCriacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataCriacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataDesejada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataDesejada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_projecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_projecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_responsavel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_responsavel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

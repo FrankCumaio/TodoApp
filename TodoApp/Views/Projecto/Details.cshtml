@@ -1,0 +1,58 @@
+﻿@model TodoApp.Models.Projecto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Projecto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataFim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_membro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_membro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

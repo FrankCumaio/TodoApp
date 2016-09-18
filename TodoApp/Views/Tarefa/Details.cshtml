@@ -1,0 +1,82 @@
+﻿@model TodoApp.Models.Tarefa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataCriacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataCriacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataDesejada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataDesejada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_projecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_projecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_responsavel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_responsavel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,96 @@
+﻿
+@model IEnumerable<TodoApp.Models.Projecto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="ProjectoController">
+    <div class="divList">
+        <p>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    <input type="text" class="form-control" placeholder="Pesquisar" ng-model="searchKeyword">
+                </div>
+            </div>
+        <p>
+
+            <button ng-click="AddBookDiv()" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                Registar Projecto
+            </button>
+        </p>
+        <table class="table table-hover">
+            <tr>
+                <td><b>Nome</b></td>
+                <td><b>Data de inicio</b></td>
+                <td><b>Data de fim</b></td>
+                <td><b>Responsavel</b></td>
+                <td><b>Estado</b></td>
+                <td><b>Operacaoes</b></td>
+            </tr>
+            <tr ng-repeat="Projecto in Projectos | filter: searchKeyword">
+                <td>
+                    {{Projecto.nome}}
+                </td>
+                <td>
+                    {{Projecto.dataInicio}}
+                </td>
+                <td>
+                    {{Projecto.dataFim}}
+                </td>
+                <td>
+                    {{Projecto.membro}}
+                </td>
+                <td>
+                    {{Projecto.estado}}
+                </td>
+                <td>
+                    <span ng-click="editProjecto(Projecto)" class="btn btn-primary">Editar</span>
+                    <span ng-click="deleteProjecto(Projecto)" class="btn btn-danger">Apagar</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Registo de Projectos</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form>
+                            <div class="form-group">
+                                <label for="nome">Nome Do projecto</label>
+                                <input type="text" class="form-control" id="email" placeholder="nome do projecto" ng-model="nomeProjecto">
+                            </div>
+                            <div class="form-group">
+                                <label for="dI">Data de Inicio</label>
+                                <input type="date" class="form-control" placeholder="Data de Inicio" ng-model="dataInicio">
+                            </div>
+                            <div class="form-group">
+                                <label for="dI">Data Final</label>
+                                <input type="date" class="form-control" placeholder="Data Final" ng-model="dataFim">
+                            </div>
+                            <div class="form-group">
+                                <label for="dI">Responsavel</label>
+                                <input type="text" class="form-control" placeholder="Membro Responsavel" ng-model="membro">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" value="Save" ng-click="AddUpdateBook()" data-dismiss="modal" />
+                    <input type="button" class="btn btn-danger" value="Cancel" ng-click="Cancel()" data-dismiss="modal" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

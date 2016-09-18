@@ -26,6 +26,14 @@ namespace TodoApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularJS").Include(
+         "~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ProjectoJs").Include(
+                                 "~/Scripts/Module/ProjectoModule.js",
+                                 "~/Scripts/Service/ProjectoService.js",
+                                 "~/Scripts/Controller/ProjectoController.js"));
         }
     }
 }
