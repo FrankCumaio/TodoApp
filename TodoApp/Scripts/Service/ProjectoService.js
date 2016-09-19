@@ -1,45 +1,46 @@
 ﻿app.service("ProjectoService", function ($http) {
 
-    //get All Books
+    //get All Projectos
     this.getProjectos = function () {
         return $http.get("ListaProjecto");
     };
 
     // get Book by bookId
-    this.getBook = function (bookId) {
+    this.getProjecto = function (projectoid) {
+        alert("y");
         var response = $http({
             method: "post",
-            url: "GetBookById",
+            url: "GetProjectoById",
             params: {
-                id: JSON.stringify(bookId)
+                id: JSON.stringify(projectoid)
             }
         });
         return response;
     }
 
-    // Update Book 
-    this.updateBook = function (book) {
+    // Update Projecto
+    this.updateProjecto = function (projecto) {
         var response = $http({
             method: "post",
-            url: "UpdateBook",
-            data: JSON.stringify(book),
+            url: "updateProjecto",
+            data: JSON.stringify(projecto),
             dataType: "json"
         });
         return response;
     }
 
-    // Add Book
-    this.AddBook = function (book) {
+    // Adicionar projecto
+    this.AddProjecto = function (projecto) {
         var response = $http({
             method: "post",
-            url: "AddBook",
-            data: JSON.stringify(book),
+            url: "gravar",
+            data: JSON.stringify(projecto),
             dataType: "json"
         });
         return response;
     }
 
-    //Delete Book
+    //apagar projecto
     this.DeleteBook = function (bookId) {
         var response = $http({
             method: "post",

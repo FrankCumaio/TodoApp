@@ -16,7 +16,7 @@
             </div>
         <p>
 
-            <button ng-click="AddBookDiv()" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModal">
                 Registar Projecto
             </button>
         </p>
@@ -46,7 +46,7 @@
                     {{Projecto.estado}}
                 </td>
                 <td>
-                    <span ng-click="editProjecto(Projecto)" class="btn btn-primary">Editar</span>
+                    <span ng-click="editarProjecto(Projecto)" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar</span>
                     <span ng-click="deleteProjecto(Projecto)" class="btn btn-danger">Apagar</span>
                 </td>
             </tr>
@@ -67,7 +67,7 @@
                         <form>
                             <div class="form-group">
                                 <label for="nome">Nome Do projecto</label>
-                                <input type="text" class="form-control" id="email" placeholder="nome do projecto" ng-model="nomeProjecto">
+                                <input type="text" class="form-control" id="email" placeholder="nome do projecto" ng-model="nome">
                             </div>
                             <div class="form-group">
                                 <label for="dI">Data de Inicio</label>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" value="Save" ng-click="AddUpdateBook()" data-dismiss="modal" />
+                    <input type="button" class="btn btn-default" value="Registar" ng-click="AddUpdateProjecto()" data-dismiss="modal" />
                     <input type="button" class="btn btn-danger" value="Cancel" ng-click="Cancel()" data-dismiss="modal" />
                 </div>
             </div>

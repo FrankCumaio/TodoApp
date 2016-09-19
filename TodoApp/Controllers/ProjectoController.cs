@@ -27,6 +27,7 @@ namespace TodoApp.Controllers
 
             return Json(db.Projecto.Select(p => new
             {
+                id = p.id,
                 nome = p.nome,
                 membro = p.membro.nome,
                 dataInicio = p.dataInicio.ToString(),
@@ -37,108 +38,166 @@ namespace TodoApp.Controllers
 
         }
 
-        // GET: Projecto/Details/5
-        public ActionResult Details(int? id)
+        // Add book
+        public string gravar(Projecto projecto)
         {
-            if (id == null)
+            if (projecto != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                using (todoAppContext db = new todoAppContext())
+                {
+                    db.Projecto.Add(projecto);
+                    db.SaveChanges();
+                    return "Book record added successfully";
+                }
             }
-            Projecto projecto = db.Projecto.Find(id);
-            if (projecto == null)
+            else
             {
-                return HttpNotFound();
+                return "Invalid book record";
             }
-            return View(projecto);
         }
 
-        // GET: Projecto/Create
-        public ActionResult Create()
+        //GET: Book by Id
+        public JsonResult GetProjectoById(int? id)
         {
-            return View();
+
+                Projecto getProjectoById = db.Projecto.Find(id);
+   
+
+                return Json(new
+                {
+                    id = getProjectoById.id,
+                    nome = getProjectoById.nome,
+                    membro = getProjectoById.membro.nome,
+                    dataInicio = getProjectoById.dataInicio.ToString(),
+                    dataFim = getProjectoById.dataFim.ToString(),
+                    estado = getProjectoById.estado
+                }, JsonRequestBehavior.AllowGet);
+            
         }
 
-        // POST: Projecto/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nome,dataInicio,dataFim,id_membro,estado")] Projecto projecto)
+        public string UpdateProjecto(Projecto projecto)
         {
-            if (ModelState.IsValid)
+            if (projecto != null)
             {
-                db.Projecto.Add(projecto);
+
+
+                Projecto _projecto = db.Projecto.Where(b => b.id == projecto.id).FirstOrDefault();
+                _projecto.nome = projecto.nome;
+                _projecto.dataInicio = projecto.dataInicio;
+                _projecto.dataFim = projecto.dataFim;
+                _projecto.membro = projecto.membro;
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                return "projecto record updated successfully";
 
-            return View(projecto);
+            }
+            else
+            {
+                return "Invalid book record";
+            }
         }
 
-        // GET: Projecto/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Projecto projecto = db.Projecto.Find(id);
-            if (projecto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(projecto);
-        }
+        //    // GET: Projecto/Details/5
+        //    public ActionResult Details(int? id)
+        //    {
+        //        if (id == null)
+        //        {
+        //            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //        }
+        //        Projecto projecto = db.Projecto.Find(id);
+        //        if (projecto == null)
+        //        {
+        //            return HttpNotFound();
+        //        }
+        //        return View(projecto);
+        //    }
 
-        // POST: Projecto/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nome,dataInicio,dataFim,id_membro,estado")] Projecto projecto)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(projecto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(projecto);
-        }
+        //    // GET: Projecto/Create
+        //    public ActionResult Create()
+        //    {
+        //        return View();
+        //    }
 
-        // GET: Projecto/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Projecto projecto = db.Projecto.Find(id);
-            if (projecto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(projecto);
-        }
+        //    // POST: Projecto/Create
+        //    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //    [HttpPost]
+        //    [ValidateAntiForgeryToken]
+        //    public ActionResult Create([Bind(Include = "id,nome,dataInicio,dataFim,id_membro,estado")] Projecto projecto)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            db.Projecto.Add(projecto);
+        //            db.SaveChanges();
+        //            return RedirectToAction("Index");
+        //        }
 
-        // POST: Projecto/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Projecto projecto = db.Projecto.Find(id);
-            db.Projecto.Remove(projecto);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //        return View(projecto);
+        //    }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //    // GET: Projecto/Edit/5
+        //    public ActionResult Edit(int? id)
+        //    {
+        //        if (id == null)
+        //        {
+        //            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //        }
+        //        Projecto projecto = db.Projecto.Find(id);
+        //        if (projecto == null)
+        //        {
+        //            return HttpNotFound();
+        //        }
+        //        return View(projecto);
+        //    }
+
+        //    // POST: Projecto/Edit/5
+        //    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //    [HttpPost]
+        //    [ValidateAntiForgeryToken]
+        //    public ActionResult Edit([Bind(Include = "id,nome,dataInicio,dataFim,id_membro,estado")] Projecto projecto)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            db.Entry(projecto).State = EntityState.Modified;
+        //            db.SaveChanges();
+        //            return RedirectToAction("Index");
+        //        }
+        //        return View(projecto);
+        //    }
+
+        //    // GET: Projecto/Delete/5
+        //    public ActionResult Delete(int? id)
+        //    {
+        //        if (id == null)
+        //        {
+        //            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //        }
+        //        Projecto projecto = db.Projecto.Find(id);
+        //        if (projecto == null)
+        //        {
+        //            return HttpNotFound();
+        //        }
+        //        return View(projecto);
+        //    }
+
+        //    // POST: Projecto/Delete/5
+        //    [HttpPost, ActionName("Delete")]
+        //    [ValidateAntiForgeryToken]
+        //    public ActionResult DeleteConfirmed(int id)
+        //    {
+        //        Projecto projecto = db.Projecto.Find(id);
+        //        db.Projecto.Remove(projecto);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    protected override void Dispose(bool disposing)
+        //    {
+        //        if (disposing)
+        //        {
+        //            db.Dispose();
+        //        }
+        //        base.Dispose(disposing);
+        //    }
     }
 }

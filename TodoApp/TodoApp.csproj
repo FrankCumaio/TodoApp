@@ -142,6 +142,10 @@
     <Compile Include="Migrations\201609182050280_Update`.Designer.cs">
       <DependentUpon>201609182050280_Update`.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609190639169_UPDATE2.cs" />
+    <Compile Include="Migrations\201609190639169_UPDATE2.Designer.cs">
+      <DependentUpon>201609190639169_UPDATE2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DAL\todoAppContext.cs" />
     <Compile Include="Models\Membro.cs" />
@@ -202,6 +206,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1008,6 +1013,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609182050280_Update`.resx">
       <DependentUpon>201609182050280_Update`.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190639169_UPDATE2.resx">
+      <DependentUpon>201609190639169_UPDATE2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
